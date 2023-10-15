@@ -17,11 +17,12 @@
                 for (var addedNode of mutation.addedNodes) {
                     // 检查是否是 <script> 元素
                     if (addedNode.tagName === 'SCRIPT') {
-                        if (addedNode.src.indexOf('adsninja_client.js' > 0)) {
+                        if (addedNode.src.indexOf('adsninja_client.js') > 0) {
                             addedNode.src = "";
+                        } else {
+                            addedNode.textContent = addedNode.textContent.replace("r9aeadS();", "");
+                            addedNode.textContent = addedNode.textContent.replace("document.getElementById('google_esf')", "document.body");
                         }
-                        addedNode.textContent = addedNode.textContent.replace("r9aeadS();", "");
-                        addedNode.textContent = addedNode.textContent.replace("document.getElementById('google_esf')", "document.body");
                     }
                 }
             }
